@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خانه ریاضی</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .welcome {
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .welcome div {
+            display: inline-block;
+            width: 50%;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: transform 1s;
+        }
+        .welcome .left {
+            left: 0;
+            transform: translateX(-100%);
+        }
+        .welcome .right {
+            right: 0;
+            transform: translateX(100%);
+        }
+        .welcome.show .left, .welcome.show .right {
+            transform: translateX(0);
+        }
+        .search-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-box input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-box input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .fixed-button {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .fixed-button a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+        .fixed-button a.active {
+            color: black;
+        }
+        .login-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .login-box input[type="text"], .login-box input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .login-box input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .comment-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .comment-box textarea {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .comment-box input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .image-gallery {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            transition: left 1s;
+        }
+        .image-gallery img.active {
+            left: 0;
+        }
+        .image-gallery img.prev {
+            left: -100%;
+        }
+        .qa-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qa-box input[type="text"], .qa-box textarea {
+            width: 80%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .qa-box input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .qa-list {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .qa-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body onload="showWelcome(); startSlider();">
+    <div class="welcome" id="welcome">
+        <div class="left">خوش آمدید</div>
+        <div class="right">به خانه ریاضی!</div>
+    </div>
+    
+    <div class="search">
+<li>اطلاعات تماس</li>
+            <li>فرم تماس</li>
+        </ul>
+    </div>
+
+    <div class="image-gallery" id="imageGallery">
+        <img src="image1.jpg" alt="عکس ۱" class="active">
+        <img src="image2.jpg" alt="عکس ۲">
+        <img src="image3.jpg" alt="عکس ۳">
+        <img src="image4.jpg" alt="عکس ۴">
+        <img src="image5.jpg" alt="عکس ۵">
+        <img src="image6.jpg" alt="عکس ۶">
+        <img src="image7.jpg" alt="عکس ۷">
+    </div>
+
+    <div class="fixed-button">
+        <a href="https://example.com/home" id="home-button">خانه</a>
+        <a href="https://example.com/education" id="education-button">مطالب آموزشی</a>
+        <a href="https://example.com/online-exam" id="online-exam-button">آزمون آنلاین</a>
+        <a href="https://example.com/games" id="games-button">بازی</a>
+        <a href="https://example.com/faq" id="faq-button">بیشتر بدانیم</a>
+        <a href="https://example.com/settings" id="settings-button">تنظیمات</a>
+    </div>
+
+    <div class="qa-box">
+        <form action="#" method="post">
+            <input type="text" name="question" placeholder="سوال خود را وارد کنید...">
+            <input type="submit" value="ارسال سوال">
+        </form>
+    </div>
+    
+    <div class="qa-list">
+        <div class="qa-item">
+            <p><strong>سوال:</strong> نمونه سوال ۱</p>
+            <p><strong>پاسخ:</strong> نمونه پاسخ ۱</p>
+        </div>
+        <div class="qa-item">
+            <p><strong>سوال:</strong> نمونه سوال ۲</p>
+            <p><strong>پاسخ:</strong> نمونه پاسخ ۲</p>
+        </div>
+        <!-- سوالات و پاسخ‌های بیشتر -->
+    </div>
+
+    <script>
+        function showWelcome() {
+            document.getElementById("welcome").classList.add("show");
+        }
+
+        function startSlider() {
+            let currentIndex = 0;
+            const images = document.querySelectorAll('.image-gallery img');
+
+            setInterval(() => {
+                images[currentIndex].classList.remove('active');
+                images[currentIndex].classList.add('prev');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+                images[currentIndex].classList.remove('prev');
+            }, 5000);
+        }
+
+        document.querySelectorAll('.fixed-button a').forEach(function(button) {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.fixed-button a').forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
